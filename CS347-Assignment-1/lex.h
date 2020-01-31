@@ -1,26 +1,23 @@
-#define EOI		       0	/* End of input			*/
-#define SEMI		     1	/* ; 				*/
-#define PLUS 	       2	/* + 				*/
-#define TIMES		     3	/* * 				*/
-#define LP		       4	/* (				*/
-#define RP		       5	/* )				*/
-#define NUM_OR_ID	   6	/* Decimal Number or Identifier */
-#define DIV          7
-#define MINUS        8
-#define IF           9
-#define THEN        10
-#define ELSE        11
-#define WHILE       12
-#define DO          13
-#define FOR         14
-#define LT 		      15   /* less than  */
-#define GT 		      16   /* greater than */
-#define EQUAL 			17   /* equal  */
-#define BEGIN 		  18   /* begin */
-#define END			    19   /* end		*/
-#define ID 			    20   /* Identifier	*/
-#define COL         21   /*   ; 	*/
-
+#define EOI		   0	/* End of input			*/
+#define SEMI		 1	/* ;				*/
+#define COL		   2	/* : 				*/
+#define PLUS 	 	 3	/* + 				*/
+#define MINUS		 4	/* - 				*/
+#define TIMES		 5	/* * 				*/
+#define DIV		   6	/* / 				*/
+#define EQUAL		 7	/* = 				*/
+#define LT		   8	/* < 				*/
+#define GT		   9	/* > 				*/
+#define LP		  10	/* (				*/
+#define RP		  11	/* )				*/
+#define IF		  12	/* if 				*/
+#define THEN		13	/* then 				*/
+#define WHILE		14	/* while 				*/
+#define DO		  15	/* do 				*/
+#define BEGIN		16	/* begin 				*/
+#define END		  17	/* end 				*/
+#define ID		  18	/* id 				*/
+#define NUM_OR_ID	19	/* Decimal Number or Identifier */
 
 extern char *yytext;		/* in lex.c			*/
 extern int yyleng;

@@ -10,7 +10,7 @@ int yylineno = 0;  /* Input line number        */
 
 int lex(void){
 
-   static char input_buffer[1024];
+   static char input_buffer[1024]= "a+b*c+d";
    char        *current;
 
    current = yytext + yyleng; /* Skip current
@@ -40,6 +40,8 @@ int lex(void){
          switch( *current ){
            case ';':
             return SEMI;
+           case ':':
+            return COL;
            case '+':
             return PLUS;
            case '-':
@@ -48,6 +50,12 @@ int lex(void){
             return TIMES;
            case '/':
             return DIV;
+           case '=':
+            return EQUAL;
+           case '<':
+            return LT;
+           case '>':
+            return GT;
            case '(':
             return LP;
            case ')':
@@ -60,9 +68,42 @@ int lex(void){
             if(!isalnum(*current))
                fprintf(stderr, "Not alphanumeric <%c>\n", *current);
             else{
-               while(isalnum(*current))
+               char str[10];
+               int i = 0;
+               while(isalnum(*current)){
+                  if(i < 9){
+                    str[i] = *current;
+                    i++;
+                  }
+                  else str[0] = '\0';
                   ++current;
+               }
+               str[i] = '\0';
                yyleng = current - yytext;
+
+               if(strcmp(str,"if") == 0){
+                  return IF;
+               }
+               else if(strcmp(str,"then") == 0){
+                  return THEN;
+               }
+               else if(strcmp(str,"while") == 0){
+                  return WHILE;
+               }
+               else if(strcmp(str,"do") == 0){
+                  return DO;
+               }
+               else if(strcmp(str,"begin") == 0){
+                  return BEGIN;
+               }
+               else if(strcmp(str,"end") == 0){
+                  return END;
+               }
+               else if(str[0]>='a' && str[0]<='z' || str[0]>='A' && str[0]<='Z')
+                {
+                  return ID;
+                }
+              else
                return NUM_OR_ID;
             }
             break;
