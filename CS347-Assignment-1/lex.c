@@ -1,16 +1,17 @@
 #include "lex.h"
 #include <stdio.h>
 #include <ctype.h>
-
+#include <stdlib.h>
+#include <string.h>
 
 char* yytext = ""; /* Lexeme (not '\0'
                       terminated)              */
 int yyleng   = 0;  /* Lexeme length.           */
 int yylineno = 0;  /* Input line number        */
+char* idname = "";
 
 int lex(void){
-
-   static char input_buffer[1024]= "a+b*c+d";
+   static char input_buffer[1024];
    char        *current;
 
    current = yytext + yyleng; /* Skip current
@@ -24,7 +25,7 @@ int lex(void){
          */
 
          current = input_buffer;
-         if(!gets(input_buffer)){
+         if(!fgets(input_buffer,1024,stdin)){
             *current = '\0' ;
 
             return EOI;
@@ -37,75 +38,75 @@ int lex(void){
          /* Get the next token */
          yytext = current;
          yyleng = 1;
+         // printf("%c\n", *yytext);
          switch( *current ){
-           case ';':
-            return SEMI;
-           case ':':
-            return COL;
-           case '+':
-            return PLUS;
-           case '-':
-            return MINUS;
-           case '*':
-            return TIMES;
-           case '/':
-            return DIV;
-           case '=':
-            return EQUAL;
-           case '<':
-            return LT;
-           case '>':
-            return GT;
-           case '(':
-            return LP;
-           case ')':
-            return RP;
-           case '\n':
-           case '\t':
-           case ' ' :
-            break;
-           default:
-            if(!isalnum(*current))
-               fprintf(stderr, "Not alphanumeric <%c>\n", *current);
-            else{
-               char str[10];
-               int i = 0;
-               while(isalnum(*current)){
-                  if(i < 9){
-                    str[i] = *current;
-                    i++;
-                  }
-                  else str[0] = '\0';
-                  ++current;
+            case ';':
+               return SEMI;
+            case '+':
+               return PLUS;
+            case '*':
+               return TIMES;
+            case '(':
+               return LP;
+            case ')':
+               return RP;
+            case '-':
+               return MINUS;
+            case '/':
+               return DIVIDE;
+            case '<':
+               return LESS;
+            case '>':
+               return GREAT;
+            case ':':
+               current++;
+               // printf("%c special", *current);
+               if(*current != '='){
+                  current--;
+                  fprintf(stderr, "inserting missing '=' after ':'\n");
                }
-               str[i] = '\0';
-               yyleng = current - yytext;
+               yyleng++;
+               return ASSIGN;
+            case '=':
+               return EQUAL;
+            case '\n':
+               break;
+            case '\t':
+               break;
+            case ' ' :
+               break;
+            default:
 
-               if(strcmp(str,"if") == 0){
-                  return IF;
+               if(!isalnum(*current)){
+                  // printf("scanning 1 b\n");
+                  fprintf(stderr, "Not alphanumeric <%c>\n", *current);
                }
-               else if(strcmp(str,"then") == 0){
-                  return THEN;
+               else{
+                  // printf("scanning 2 b\n");
+                  while(isalnum(*current)){
+                     ++current;
+                  }
+                  yyleng = current - yytext;
+                  char *tokens[] = {"if", "then", "while", "do", "begin", "end"};
+                  int returnvals[] = {IF, THEN, WHILE, DO, BEGIN, END};
+                  int lengths[] = {2,4,5,2,5,3};
+                  int i=0;
+
+                  for(i=0; i<6; i++){
+                     if(strncmp(yytext, tokens[i],yyleng)==0 && yyleng == lengths[i]){
+                        // printf("keyword %d\n", i);
+                        return returnvals[i];
+                     }
+                  }
+                  idname = (char *) malloc(yyleng+1);
+                  strncpy(idname, yytext, yyleng);
+            		  int j=0;
+            		  for(j=0; j<yyleng; j++)
+            		  {
+            			   if(!isdigit(idname[j])) return NUM_OR_ID;
+            		  }
+            		  return CONST;
                }
-               else if(strcmp(str,"while") == 0){
-                  return WHILE;
-               }
-               else if(strcmp(str,"do") == 0){
-                  return DO;
-               }
-               else if(strcmp(str,"begin") == 0){
-                  return BEGIN;
-               }
-               else if(strcmp(str,"end") == 0){
-                  return END;
-               }
-               else if(str[0]>='a' && str[0]<='z' || str[0]>='A' && str[0]<='Z')
-                {
-                  return ID;
-                }
-              else
-               return NUM_OR_ID;
-            }
             break;
          }
       }
