@@ -1,0 +1,68 @@
+(test) EQUI_JOIN <test.A = test.A AND> (test2)
+SELECT <student_id<=5 AND score>50 OR attendance>=75> (enroll)
+(student) EQUI_JOIN <id = student_id AND score > 75> (enroll)
+
+SELECT <salary<2> (corona)
+SELECT <salary> (test)
+SELECT <stayHome<2> (test)
+SELECT <2>=COvid> (test)
+SELECT (test) <salary>2>
+SELECT <score>=45> (enroll)
+SELECT <> (test)
+SELECT <id<=3 AND dept_id>=1> (student)
+SELECT <id<=3 AND dept_id>=1 OR id>3 AND dept_id>=1> (student)
+SELECT <(id<=3 AND dept_id>=1) OR (id>3 AND dept_id>=1)> (student)
+SELECT <(id<=3 AND dept_id>=1) OR (id>3 AND dept_id<3)> (student)
+SELECT (test)
+SELECT <3>=id> (student)
+SELECT <3<=name> (student)
+SELECT <name<'Ram'> (student)
+SELECT <(A>=22 OR salary > 200 AND (C > 50 AND (D='fff' OR D='eef') OR D<='eee'))> (test)
+
+(stay) EQUI_JOIN< stay.stay = home.home > (home)
+(stay) EQUI_JOIN< stay.home = student.id > (student)
+(student) EQUI_JOIN< student.id = stay.safe > (stay)
+(student) EQUI_JOIN <student.id = enroll.student_id> (enroll)
+(student) EQUI_JOIN <NOT(student.id = enroll.student_id) AND student.id=1> (enroll)
+
+(student) EQUI_JOIN <enroll.student_id = student.id> (enroll)
+(student) EQUI_JOIN <student_id = id> (enroll)
+(student) EQUI_JOIN <student.student_id = student._id> (enroll)
+(student) EQUI_JOIN <student.name=enroll.student_id> (enroll)
+(student) EQUI_JOIN <NOT(student.name=enroll.student_id)> (enroll)
+
+(student) EQUI_JOIN <student.id=enroll.student_id AND (student.id=1 OR student.id=2) AND enroll.score!=100> (enroll)
+
+(student) EQUI_JOIN <student.id=enroll.student_id AND student.name='DeepakGami'> (enroll)
+(student) EQUI_JOIN <student.id=enroll.student_id AND student.name='DeepakGami' OR name='Ram'> (enroll)
+(student) EQUI_JOIN <student.name='Razia'> (enroll)
+(student) EQUI_JOIN <'Lakshman'=student.name> (enroll)
+(student) EQUI_JOIN <student.name!=student2.name> (student2)
+(student) EQUI_JOIN <NOT (student.name=student2.name)> (student2)
+
+(student) EQUI_JOIN <> (student2)
+
+(student2) CARTESIAN_PRODUCT (enroll2)
+(stay) CARTESIAN_PRODUCT (student)
+(enroll1) (enroll2) CARTESIAN_PRODUCT (student2)
+
+
+PROJECT <Id,salary, salary, Rank, Quote> (test)
+PROJECT <Id, Rank, Quote> (test)
+PROJECT <salary, Rank, Quote> (test)
+PROJECT <Id,salary, C, D> (enroll)
+PROJECT <Roll> (test3)
+PROJECT <Dept> (test3)
+
+SELECT <Name='Modi' AND salary>2000> (Employee)
+SELECT <Salary<200> (Employee)
+SELECT <Name='RaGA'> (Employee)
+SELECT <Name='Pranay' OR Name='Gami'> (Employee)
+SELECT <NOT(Name>='Modi')> (Employee)
+SELECT <(Name='Ram')> (Employee)
+SELECT <(Name=1)> (Employee)
+SELECT <()> (Department)
+
+SELECT (Employee) <(Name='Tharoor')>
+SELECT <(Name='Modi' AND id=1 OR Salary=100)> (Employee)
+SELECT <(Name='Modi' AND (id=1 OR Salary=100))> (Employee)

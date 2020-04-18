@@ -1,0 +1,8 @@
+id,name,dept_id
+int,str,int
+1,'DeepakGami',1
+2,'PranayGarg',2
+3,'Razia',4
+4,'Ram',1
+5,'Lakshman',3
+6,'Sita',2
