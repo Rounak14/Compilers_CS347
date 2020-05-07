@@ -1,0 +1,318 @@
+function begin _fib
+T0 = 0
+T1 = 0
+T2 = 0
+T2 = T2 + T0
+T3 = 2
+T2 = T2 * T3
+T2 = T2 + T1
+T3 = 1
+_F_int_2[T2] = T3
+T3 = 0
+T2 = 1
+T1 = 0
+T1 = T1 + T3
+T0 = 2
+T1 = T1 * T0
+T1 = T1 + T2
+T0 = 1
+_F_int_2[T1] = T0
+T0 = 1
+T1 = 0
+T2 = 0
+T2 = T2 + T0
+T3 = 2
+T2 = T2 * T3
+T2 = T2 + T1
+T3 = 1
+_F_int_2[T2] = T3
+T3 = 1
+T2 = 1
+T1 = 0
+T1 = T1 + T3
+T0 = 2
+T1 = T1 * T0
+T1 = T1 + T2
+T0 = 0
+_F_int_2[T1] = T0
+T0 = 0
+T1 = 0
+T2 = 0
+T2 = T2 + T0
+T3 = 2
+T2 = T2 * T3
+T2 = T2 + T1
+T3 = 1
+_M_int_2[T2] = T3
+T3 = 0
+T2 = 1
+T1 = 0
+T1 = T1 + T3
+T0 = 2
+T1 = T1 * T0
+T1 = T1 + T2
+T0 = 1
+_M_int_2[T1] = T0
+T0 = 1
+T1 = 0
+T2 = 0
+T2 = T2 + T0
+T3 = 2
+T2 = T2 * T3
+T2 = T2 + T1
+T3 = 1
+_M_int_2[T2] = T3
+T3 = 1
+T2 = 1
+T1 = 0
+T1 = T1 + T3
+T0 = 2
+T1 = T1 * T0
+T1 = T1 + T2
+T0 = 0
+_M_int_2[T1] = T0
+T0 = _n_int_1
+T1 = 0
+T2 = T0 == T1
+if T2 == 0 goto L79
+T2 = 0
+return T2
+L79:
+T2 = 2
+_i_int_2 = T2
+L82:
+T1 = _i_int_2
+T0 = _n_int_1
+T3 = T1 <= T0
+if T3 == 0 goto L276
+goto L94
+L88:
+T0 = 1
+T1 = _i_int_2
+T0 = T0 + T1
+_i_int_2 = T0
+goto L82
+L94:
+T0 = 0
+T3 = 0
+T2 = 0
+T2 = T2 + T0
+T1 = 2
+T2 = T2 * T1
+T2 = T2 + T3
+T1 = _F_int_2[T2]
+T2 = 0
+T3 = 0
+T0 = 0
+T0 = T0 + T2
+T4 = 2
+T0 = T0 * T4
+T0 = T0 + T3
+T4 = _M_int_2[T0]
+T0 = T1 * T4
+T4 = 0
+T1 = 1
+T3 = 0
+T3 = T3 + T4
+T2 = 2
+T3 = T3 * T2
+T3 = T3 + T1
+T2 = _F_int_2[T3]
+T3 = 1
+T1 = 0
+T4 = 0
+T4 = T4 + T3
+T5 = 2
+T4 = T4 * T5
+T4 = T4 + T1
+T5 = _M_int_2[T4]
+T4 = T2 * T5
+T5 = T0 + T4
+_x_int_3 = T5
+T5 = 0
+T4 = 0
+T0 = 0
+T0 = T0 + T5
+T2 = 2
+T0 = T0 * T2
+T0 = T0 + T4
+T2 = _F_int_2[T0]
+T0 = 0
+T4 = 1
+T5 = 0
+T5 = T5 + T0
+T1 = 2
+T5 = T5 * T1
+T5 = T5 + T4
+T1 = _M_int_2[T5]
+T5 = T2 * T1
+T1 = 0
+T2 = 1
+T4 = 0
+T4 = T4 + T1
+T0 = 2
+T4 = T4 * T0
+T4 = T4 + T2
+T0 = _F_int_2[T4]
+T4 = 1
+T2 = 1
+T1 = 0
+T1 = T1 + T4
+T3 = 2
+T1 = T1 * T3
+T1 = T1 + T2
+T3 = _M_int_2[T1]
+T1 = T0 * T3
+T3 = T5 + T1
+_y_int_3 = T3
+T3 = 1
+T1 = 0
+T5 = 0
+T5 = T5 + T3
+T0 = 2
+T5 = T5 * T0
+T5 = T5 + T1
+T0 = _F_int_2[T5]
+T5 = 0
+T1 = 0
+T3 = 0
+T3 = T3 + T5
+T2 = 2
+T3 = T3 * T2
+T3 = T3 + T1
+T2 = _M_int_2[T3]
+T3 = T0 * T2
+T2 = 1
+T0 = 1
+T1 = 0
+T1 = T1 + T2
+T5 = 2
+T1 = T1 * T5
+T1 = T1 + T0
+T5 = _F_int_2[T1]
+T1 = 1
+T0 = 0
+T2 = 0
+T2 = T2 + T1
+T4 = 2
+T2 = T2 * T4
+T2 = T2 + T0
+T4 = _M_int_2[T2]
+T2 = T5 * T4
+T4 = T3 + T2
+_z_int_3 = T4
+T4 = 1
+T2 = 0
+T3 = 0
+T3 = T3 + T4
+T5 = 2
+T3 = T3 * T5
+T3 = T3 + T2
+T5 = _F_int_2[T3]
+T3 = 0
+T2 = 1
+T4 = 0
+T4 = T4 + T3
+T0 = 2
+T4 = T4 * T0
+T4 = T4 + T2
+T0 = _M_int_2[T4]
+T4 = T5 * T0
+T0 = 1
+T5 = 1
+T2 = 0
+T2 = T2 + T0
+T3 = 2
+T2 = T2 * T3
+T2 = T2 + T5
+T3 = _F_int_2[T2]
+T2 = 1
+T5 = 1
+T0 = 0
+T0 = T0 + T2
+T1 = 2
+T0 = T0 * T1
+T0 = T0 + T5
+T1 = _M_int_2[T0]
+T0 = T3 * T1
+T1 = T4 + T0
+_w_int_3 = T1
+T1 = 0
+T0 = 0
+T4 = 0
+T4 = T4 + T1
+T3 = 2
+T4 = T4 * T3
+T4 = T4 + T0
+T3 = _x_int_3
+_F_int_2[T4] = T3
+T3 = 0
+T4 = 1
+T0 = 0
+T0 = T0 + T3
+T1 = 2
+T0 = T0 * T1
+T0 = T0 + T4
+T1 = _y_int_3
+_F_int_2[T0] = T1
+T1 = 1
+T0 = 0
+T4 = 0
+T4 = T4 + T1
+T3 = 2
+T4 = T4 * T3
+T4 = T4 + T0
+T3 = _z_int_3
+_F_int_2[T4] = T3
+T3 = 1
+T4 = 1
+T0 = 0
+T0 = T0 + T3
+T1 = 2
+T0 = T0 * T1
+T0 = T0 + T4
+T1 = _w_int_3
+_F_int_2[T0] = T1
+goto L88
+L276:
+T1 = 0
+T0 = 0
+T4 = 0
+T4 = T4 + T1
+T3 = 2
+T4 = T4 * T3
+T4 = T4 + T0
+T3 = _F_int_2[T4]
+return T3
+function end
+function begin main
+T3 = 0
+_i_int_2 = T3
+read T3
+_n_int_2 = T3
+T3 = 0
+_i_int_2 = T3
+L294:
+T4 = _i_int_2
+T0 = _n_int_2
+T1 = T4 < T0
+if T1 == 0 goto L314
+goto L305
+L300:
+T0 = _i_int_2
+T4 = T0 + 1
+_i_int_2 = T4
+goto L294
+L305:
+T4 = _i_int_2
+param T4
+refparam T4
+call _fib, 2
+_a_int_2 = T4
+T4 = _a_int_2
+print T4
+goto L300
+L314:
+T4 = 0
+return T4
+function end

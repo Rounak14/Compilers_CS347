@@ -1,0 +1,3 @@
+1. RUN "make" command in both the folders "firstPass" & "secondPass"
+2. RUN "./execute.sh 'file_name'" to compile the file "file_name" in "input" directory of the firstPass directory
+3. The "output" folder contains the needed file
