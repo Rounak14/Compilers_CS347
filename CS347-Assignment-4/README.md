@@ -1,3 +1,8 @@
+How to run:
+1. Compile using make file
+2. Run output file, sql 
+3. give a query as input by selecting a query from the file test.txt in input folder
+
 stmt_list := stmt NEWLINE stmt_list
             | stmt
 stmt := SELECT LA condition RA LP table_name RP
